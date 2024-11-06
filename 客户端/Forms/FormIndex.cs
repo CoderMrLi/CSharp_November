@@ -1,4 +1,4 @@
-﻿using C_andVP总和.Class;
+﻿using 客户端.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace C_andVP总和 {
+namespace 客户端 {
 	public partial class FormIndex : Form {
 		public FormIndex() {
 			InitializeComponent();
@@ -49,25 +49,19 @@ namespace C_andVP总和 {
 		string vppFilePath = Directory.GetCurrentDirectory() + "\\vpp";
 
 		/// <summary>
-		/// 监听
+		/// IP终结点
+		/// </summary>
+		IPEndPoint iPEndPoint;
+
+		/// <summary>
+		/// 连接服务端
 		/// </summary>
 		public Socket Socket;
+		
 		/// <summary>
-		/// 连接客户端
-		/// </summary>
-		public Socket LinkSocket;
-		/// <summary>
-		/// 接收信息
-		/// </summary>
-		public Socket ReceiveSocket;
-		/// <summary>
-		/// 建立连接线程
+		/// 接受数据线程
 		/// </summary>
 		public Thread t1;
-		/// <summary>
-		/// 收发数据线程
-		/// </summary>
-		public Thread t2;
 		
 
 
@@ -90,19 +84,17 @@ namespace C_andVP总和 {
 			#region 连接服务器
 			RuningMessages.Items.Add("开始建立连接...");
 			try {
-				Socket.Listen(10);
-				t1 = new Thread(Listen);
+				Socket.Connect(iPEndPoint);
+				RuningMessages.Items.Add("连接成功！");
+				t1 = new Thread(Recive);
 				t1.IsBackground = true;
 				t1.Start(Socket);
-			} catch ( Exception ex ) {
-				MessageBox.Show(ex.Message,"建立连接引发异常！");
+			} catch ( Exception ex  ) {
+				MessageBox.Show(ex.Message , "连接服务器引发异常");
 			}
 			#endregion
 
-
 			#region 连接成功后检测状态
-
-			
 			//项目加载过程中开启计时器
 			timer1.Start();
 			#endregion
@@ -113,15 +105,34 @@ namespace C_andVP总和 {
 		/// 定时器检测客户端及PLC的连接状态
 		/// </summary>
 		private void timer1_Tick(object sender , EventArgs e) {
-			if ( ReceiveSocket == null ) {
+			if ( Socket == null ) {
 				ClientStatus.Text = "未连接";
 				ClientStatus.ForeColor = Color.Red;
-			} else if(ReceiveSocket.Poll(1000,SelectMode.SelectRead)){
+			} else if(Socket.Poll(1000,SelectMode.SelectRead)){
 				byte[] bytes = new byte[1024];
-				int len = ReceiveSocket.Receive(bytes);
+				int len = Socket.Receive(bytes);
 				if ( len == 0 ) {
+					//RuningMessages.Items.Add("服务器断开连接！");
 					ClientStatus.Text = "已断开";
 					ClientStatus.ForeColor = Color.Red;
+					/*
+					#region 重新连接
+					int j = 0;
+					for ( int i = 0; j < 5; i++ ) {
+						j++;
+						RuningMessages.Items.Add("开始尝试重新建立连接...（" + j + "）");
+						try {
+							Socket.Connect(iPEndPoint);
+							RuningMessages.Items.Add("连接成功！");
+							t1 = new Thread(Recive);
+							t1.IsBackground = true;
+							t1.Start(Socket);
+						} catch ( Exception ex ) {
+							//MessageBox.Show(ex.Message , "连接服务器引发异常");
+						}
+					}
+					#endregion
+					*/
 				}
 			} else {
 				ClientStatus.Text = "已连接";
@@ -129,43 +140,22 @@ namespace C_andVP总和 {
 			}
 		}
 
-		/// <summary>
-		/// 监听消息
-		/// </summary>
-		/// <param name="state"></param>
-		private void Listen(Object state) { 
-			LinkSocket = state as Socket;
-			try {
-				while ( true ) { 
-					ReceiveSocket = LinkSocket.Accept();
-					MessageBox.Show("有客户端建立连接："+ ReceiveSocket.RemoteEndPoint.ToString());
-					AddRuningMessages("客户端建立连接 -> " + ReceiveSocket.RemoteEndPoint.ToString());
-
-					t2 = new Thread(Recive);
-					t2.IsBackground = true;
-					t2.Start(ReceiveSocket);
-
-				}
-			} catch ( Exception ex ) {
-				MessageBox.Show(ex.Message,"连接服务器触发异常");
-			}
-		}
+		
 		/// <summary>
 		/// 接收消息
 		/// </summary>
 		/// <param name="state"></param>
 		private void Recive(object state) { 
-			ReceiveSocket = state as Socket;
+			Socket Rsocket = state as Socket;
 			while ( true ) {
 				try {
-					byte[] bytes = new byte[1024 * 1024];
-					int len = ReceiveSocket.Receive(bytes);
+					byte[] buffer = new byte[1024 * 1024];
+					int len = Rsocket.Receive(buffer);
 					if ( len == 0 ) break;
-					string megs = Encoding.Default.GetString(bytes);
-					AddRuningMessages("接收到消息 -> " + megs);
+					string msg = Encoding.Default.GetString(buffer, 0, len);
+					AddRuningMessages("接收到数据 -> " + msg);
 				} catch ( Exception ex ) {
-					MessageBox.Show(ex.Message,"接收消息触发异常");
-					return;
+					MessageBox.Show(ex.Message);
 				}
 			}
 		}
@@ -194,8 +184,7 @@ namespace C_andVP总和 {
 				Double Yield = Double.Parse(GoodProductsShow.Text) / Double.Parse(SumShow.Text) * 100;
 				YieldNum.Text = Yield.ToString() == "NaN" ? "0" + "%" : Yield.ToString() + "%";
 				//IP终结点
-				IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse(Ini.IniAPI.GetPrivateProfileString("SocketmMessages","ipPath","",iniFilePath+"\\init.ini")),Ini.IniAPI.GetPrivateProfileInt("SocketmMessages","portNum",0,iniFilePath+"\\init.ini"));
-				Socket.Bind(iPEndPoint);
+				iPEndPoint = new IPEndPoint(IPAddress.Parse(Ini.IniAPI.GetPrivateProfileString("SocketmMessages","ipPath","",iniFilePath+"\\init.ini")),Ini.IniAPI.GetPrivateProfileInt("SocketmMessages","portNum",0,iniFilePath+"\\init.ini"));
 			} catch ( Exception ex ) {
 				MessageBox.Show(ex.Message,"配置信息加载触发异常！");
 				//throw;
@@ -213,5 +202,8 @@ namespace C_andVP总和 {
 			}
 		}
 
+		private void 退出ToolStripMenuItem_Click(object sender , EventArgs e) {
+			this.Close();
+		}
 	}
 }

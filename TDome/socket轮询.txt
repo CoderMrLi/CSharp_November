@@ -1,0 +1,23 @@
+//为空 说明还没有点击连接按钮
+if(clientSocket == null)
+{
+    socketState.Text = "未连接";
+    //不为空 说明点击了连接按钮
+    //有两种状态 : 已连接 已断开
+    //clientSocket.Poll(等待结果时间，轮询模式)
+}
+else if (clientSocket.Poll(1000, SelectMode.SelectRead))
+{
+    byte[] bytes = new byte[1024];
+    int len = clientSocket.Receive(bytes);
+    if (len == 0)
+    {
+        socketState.Text = "已断开";
+        socketStateBool = false;
+    }
+}
+else
+{
+    socketState.Text = "已连接";
+    socketStateBool = true;
+}

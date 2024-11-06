@@ -68,12 +68,14 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\CogLoad.cs" />
     <Compile Include="Forms\FormIndex.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormIndex.Designer.cs">
       <DependentUpon>FormIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class\IniAPI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FormIndex.resx">
