@@ -27,11 +27,19 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormIndex));
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.相机设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.相机1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.编辑作业ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.作业1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.参数ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.其他设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.通化讯设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.保存图片ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.标定作业ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.下相机标定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.编辑标定作业ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel3 = new System.Windows.Forms.Panel();
@@ -56,14 +64,6 @@
 			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.PLCStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.相机1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.作业1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.参数ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.下相机标定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.编辑标定作业ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.通化讯设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.保存图片ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel1.SuspendLayout();
@@ -102,6 +102,13 @@
 			this.系统ToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
 			this.系统ToolStripMenuItem.Text = "系统";
 			// 
+			// 退出ToolStripMenuItem
+			// 
+			this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+			this.退出ToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
+			this.退出ToolStripMenuItem.Text = "退出";
+			this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
+			// 
 			// 相机设置ToolStripMenuItem
 			// 
 			this.相机设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -110,6 +117,13 @@
 			this.相机设置ToolStripMenuItem.Name = "相机设置ToolStripMenuItem";
 			this.相机设置ToolStripMenuItem.Size = new System.Drawing.Size(105, 24);
 			this.相机设置ToolStripMenuItem.Text = "相机设置";
+			// 
+			// 相机1ToolStripMenuItem
+			// 
+			this.相机1ToolStripMenuItem.Name = "相机1ToolStripMenuItem";
+			this.相机1ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+			this.相机1ToolStripMenuItem.Text = "相机1";
+			this.相机1ToolStripMenuItem.Click += new System.EventHandler(this.相机1ToolStripMenuItem_Click);
 			// 
 			// 编辑作业ToolStripMenuItem
 			// 
@@ -120,6 +134,13 @@
 			this.编辑作业ToolStripMenuItem.Size = new System.Drawing.Size(105, 24);
 			this.编辑作业ToolStripMenuItem.Text = "编辑作业";
 			// 
+			// 作业1ToolStripMenuItem
+			// 
+			this.作业1ToolStripMenuItem.Name = "作业1ToolStripMenuItem";
+			this.作业1ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+			this.作业1ToolStripMenuItem.Text = "作业1";
+			this.作业1ToolStripMenuItem.Click += new System.EventHandler(this.作业1ToolStripMenuItem_Click);
+			// 
 			// 参数设置ToolStripMenuItem
 			// 
 			this.参数设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -128,6 +149,12 @@
 			this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
 			this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(105, 24);
 			this.参数设置ToolStripMenuItem.Text = "参数设置";
+			// 
+			// 参数ToolStripMenuItem
+			// 
+			this.参数ToolStripMenuItem.Name = "参数ToolStripMenuItem";
+			this.参数ToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
+			this.参数ToolStripMenuItem.Text = "参数";
 			// 
 			// 其他设置ToolStripMenuItem
 			// 
@@ -139,6 +166,18 @@
 			this.其他设置ToolStripMenuItem.Size = new System.Drawing.Size(105, 24);
 			this.其他设置ToolStripMenuItem.Text = "其他设置";
 			// 
+			// 通化讯设置ToolStripMenuItem
+			// 
+			this.通化讯设置ToolStripMenuItem.Name = "通化讯设置ToolStripMenuItem";
+			this.通化讯设置ToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+			this.通化讯设置ToolStripMenuItem.Text = "通讯设置";
+			// 
+			// 保存图片ToolStripMenuItem
+			// 
+			this.保存图片ToolStripMenuItem.Name = "保存图片ToolStripMenuItem";
+			this.保存图片ToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+			this.保存图片ToolStripMenuItem.Text = "保存图片";
+			// 
 			// 标定作业ToolStripMenuItem
 			// 
 			this.标定作业ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -148,6 +187,18 @@
 			this.标定作业ToolStripMenuItem.Name = "标定作业ToolStripMenuItem";
 			this.标定作业ToolStripMenuItem.Size = new System.Drawing.Size(105, 24);
 			this.标定作业ToolStripMenuItem.Text = "标定作业";
+			// 
+			// 下相机标定ToolStripMenuItem
+			// 
+			this.下相机标定ToolStripMenuItem.Name = "下相机标定ToolStripMenuItem";
+			this.下相机标定ToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
+			this.下相机标定ToolStripMenuItem.Text = "下相机标定";
+			// 
+			// 编辑标定作业ToolStripMenuItem
+			// 
+			this.编辑标定作业ToolStripMenuItem.Name = "编辑标定作业ToolStripMenuItem";
+			this.编辑标定作业ToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
+			this.编辑标定作业ToolStripMenuItem.Text = "编辑标定作业";
 			// 
 			// tableLayoutPanel1
 			// 
@@ -401,55 +452,6 @@
 			// 
 			this.timer1.Interval = 1000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-			// 
-			// 退出ToolStripMenuItem
-			// 
-			this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-			this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-			this.退出ToolStripMenuItem.Text = "退出";
-			this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
-			// 
-			// 相机1ToolStripMenuItem
-			// 
-			this.相机1ToolStripMenuItem.Name = "相机1ToolStripMenuItem";
-			this.相机1ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-			this.相机1ToolStripMenuItem.Text = "相机1";
-			// 
-			// 作业1ToolStripMenuItem
-			// 
-			this.作业1ToolStripMenuItem.Name = "作业1ToolStripMenuItem";
-			this.作业1ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-			this.作业1ToolStripMenuItem.Text = "作业1";
-			// 
-			// 参数ToolStripMenuItem
-			// 
-			this.参数ToolStripMenuItem.Name = "参数ToolStripMenuItem";
-			this.参数ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-			this.参数ToolStripMenuItem.Text = "参数";
-			// 
-			// 下相机标定ToolStripMenuItem
-			// 
-			this.下相机标定ToolStripMenuItem.Name = "下相机标定ToolStripMenuItem";
-			this.下相机标定ToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
-			this.下相机标定ToolStripMenuItem.Text = "下相机标定";
-			// 
-			// 编辑标定作业ToolStripMenuItem
-			// 
-			this.编辑标定作业ToolStripMenuItem.Name = "编辑标定作业ToolStripMenuItem";
-			this.编辑标定作业ToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
-			this.编辑标定作业ToolStripMenuItem.Text = "编辑标定作业";
-			// 
-			// 通化讯设置ToolStripMenuItem
-			// 
-			this.通化讯设置ToolStripMenuItem.Name = "通化讯设置ToolStripMenuItem";
-			this.通化讯设置ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-			this.通化讯设置ToolStripMenuItem.Text = "通讯设置";
-			// 
-			// 保存图片ToolStripMenuItem
-			// 
-			this.保存图片ToolStripMenuItem.Name = "保存图片ToolStripMenuItem";
-			this.保存图片ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-			this.保存图片ToolStripMenuItem.Text = "保存图片";
 			// 
 			// FormIndex
 			// 

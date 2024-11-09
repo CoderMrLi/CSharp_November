@@ -26,7 +26,8 @@ namespace 客户端.Class {
 		/// </summary>
 		/// <returns>是否加载VPP成功</returns>
 		public bool LoadVpp() { 
-			//CamTool	= CogSerializer.LoadObjectFromFile(CamPath) as CogAcqFifoTool;
+			CamTool	= CogSerializer.LoadObjectFromFile(CamPath) as CogAcqFifoTool;
+			
 			ToolBlock = CogSerializer.LoadObjectFromFile(TBPath) as CogToolBlock;
 			if ( CamTool == null || ToolBlock == null ) {
 				return false;

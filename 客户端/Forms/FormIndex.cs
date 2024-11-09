@@ -43,10 +43,7 @@ namespace 客户端 {
 		/// </summary>
 		string iniFilePath = Directory.GetCurrentDirectory() + "\\ini";
 		
-		/// <summary>
-		/// vpp路径
-		/// </summary>
-		string vppFilePath = Directory.GetCurrentDirectory() + "\\vpp";
+		
 
 		/// <summary>
 		/// IP终结点
@@ -204,6 +201,18 @@ namespace 客户端 {
 
 		private void 退出ToolStripMenuItem_Click(object sender , EventArgs e) {
 			this.Close();
+		}
+
+		private void 相机1ToolStripMenuItem_Click(object sender , EventArgs e) {
+			Forms.FormCamSet formCamSet = new Forms.FormCamSet();
+			formCamSet.ShowDialog();
+			//重新加载相机获取使用权限
+		}
+
+		private void 作业1ToolStripMenuItem_Click(object sender , EventArgs e) {
+			Forms.FormJobSet formJobSet = new Forms.FormJobSet();
+			formJobSet.ShowDialog();
+			//重新加载作业获取使用权限
 		}
 	}
 }

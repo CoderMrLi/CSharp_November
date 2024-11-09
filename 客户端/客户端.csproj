@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -401,16 +401,61 @@
   <ItemGroup>
     <Compile Include="Class\CogLoad.cs" />
     <Compile Include="Class\IniAPI.cs" />
+    <Compile Include="Forms\FormCamSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCamSet.Designer.cs">
+      <DependentUpon>FormCamSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormCommumicationSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCommumicationSet.Designer.cs">
+      <DependentUpon>FormCommumicationSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormIndex.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormIndex.Designer.cs">
       <DependentUpon>FormIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormJobSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormJobSet.Designer.cs">
+      <DependentUpon>FormJobSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormParameterSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormParameterSet.Designer.cs">
+      <DependentUpon>FormParameterSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSaveSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSaveSet.Designer.cs">
+      <DependentUpon>FormSaveSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormCamSet.resx">
+      <DependentUpon>FormCamSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCommumicationSet.resx">
+      <DependentUpon>FormCommumicationSet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormIndex.resx">
       <DependentUpon>FormIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormJobSet.resx">
+      <DependentUpon>FormJobSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormParameterSet.resx">
+      <DependentUpon>FormParameterSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSaveSet.resx">
+      <DependentUpon>FormSaveSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
