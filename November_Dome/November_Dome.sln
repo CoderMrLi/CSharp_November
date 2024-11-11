@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPSocket通信服务端", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPSocket通信客户端", "..\TDome\11_5\TCPSocket通信客户端\TCPSocket通信客户端.csproj", "{3559C532-1BCB-4EC0-B3A1-652E59B92138}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisionproDemo", "..\TDome\VisionproDemo\VisionproDemo\VisionproDemo.csproj", "{307CCFC2-38C5-4501-8B67-A01DE9204033}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{3559C532-1BCB-4EC0-B3A1-652E59B92138}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3559C532-1BCB-4EC0-B3A1-652E59B92138}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3559C532-1BCB-4EC0-B3A1-652E59B92138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{307CCFC2-38C5-4501-8B67-A01DE9204033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307CCFC2-38C5-4501-8B67-A01DE9204033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307CCFC2-38C5-4501-8B67-A01DE9204033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307CCFC2-38C5-4501-8B67-A01DE9204033}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{22E43E65-7312-4024-B258-4F322619426B} = {4A2F47FC-7B91-498C-9001-446AA036614F}
 		{AC6C00AC-EAB8-4E3C-9ADB-22696F02D355} = {4A2F47FC-7B91-498C-9001-446AA036614F}
 		{3559C532-1BCB-4EC0-B3A1-652E59B92138} = {4A2F47FC-7B91-498C-9001-446AA036614F}
+		{307CCFC2-38C5-4501-8B67-A01DE9204033} = {4A2F47FC-7B91-498C-9001-446AA036614F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2AB4EB8C-4155-40D2-8662-9813E2103C05}
