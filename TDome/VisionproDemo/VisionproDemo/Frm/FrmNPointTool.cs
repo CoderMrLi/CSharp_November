@@ -33,7 +33,7 @@ namespace VisionproDemo
             if (result == DialogResult.OK)
             {
                 frmVision.DownCameraNpointTB = cogToolBlockEditV21.Subject;
-                frmVision.SaveTB();
+                //frmVision.SaveTB();
                 MessageBox.Show("保存完成");
             }
         }

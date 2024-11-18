@@ -249,14 +249,14 @@ namespace VisionproDemo
             //sp.Open();
 
             //初始化客户端
-            //clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            //IPAddress IP = IPAddress.Parse(config.TcpIP);
-            //int port = config.TcpPort;
-            //IPEndPoint iPEndPoint = new IPEndPoint(IP, port);
+            clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            IPAddress IP = IPAddress.Parse(config.TcpIP);
+            int port = config.TcpPort;
+            IPEndPoint iPEndPoint = new IPEndPoint(IP, port);
 
-            //ConnectServer();//连接服务器
-            //ThreadPool.QueueUserWorkItem(ReceiveServerMsg, clientSocket);
-            //receivThread.Start(clientSocket);
+            ConnectServer();//连接服务器
+            ThreadPool.QueueUserWorkItem(ReceiveServerMsg, clientSocket);
+            receivThread.Start(clientSocket);
 
             //连接PLC
             plc = new SiemensPLC(CpuType.S71200, "192.168.8.10", 0, 1);

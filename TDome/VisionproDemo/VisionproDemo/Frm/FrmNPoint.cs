@@ -68,9 +68,9 @@ namespace VisionproDemo
         private void RotationCenterFunc(string msg, ICogImage image)
         {
             //分割坐标
-            //string[] pointStr = msg.Split(',');
-            //double worldX = Convert.ToDouble(pointStr[1]);//世界坐标
-            //double worldY = Convert.ToDouble(pointStr[2]);
+            string[] pointStr = msg.Split(',');
+            double worldX = Convert.ToDouble(pointStr[1]);//世界坐标
+            double worldY = Convert.ToDouble(pointStr[2]);
             try
             {
                 nPointTool.InputImage = image;
@@ -122,14 +122,14 @@ namespace VisionproDemo
                 double worldY = Convert.ToDouble(pointStr[2]);
 
                 //测试使用
-                double pixX = Convert.ToDouble(pointStr[3]);//模拟像素坐标
-                double pixY = Convert.ToDouble(pointStr[4]);
+                //double pixX = Convert.ToDouble(pointStr[3]);//模拟像素坐标
+                //double pixY = Convert.ToDouble(pointStr[4]);
 
                 mVision.DownCameraNpointTB.Inputs["InputImage"].Value = image;
 
-                //pma.Run();
-                //double pixX = pma.Results[0].GetPose().TranslationX;//像素坐标
-                //double pixY = pma.Results[0].GetPose().TranslationY;
+                pma.Run();
+                double pixX = pma.Results[0].GetPose().TranslationX;//像素坐标
+                double pixY = pma.Results[0].GetPose().TranslationY;
 
                 pointList.Add(new CalibNPoint
                 {
